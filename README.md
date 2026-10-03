@@ -56,18 +56,8 @@ npm run test
 npm run lint
 ```
 
-The build requires the client API and Supabase environment variables. No additional feature-by-feature smoke tests are required.
+The build requires the client API and Supabase environment variables. No additional feature-by-feature tests are required.
 
-## Deploy to Vercel
-
-Import this Git repository as **two Vercel projects**. Keep the existing React/Express stack; no framework migration is needed.
-
-| Project | Root directory | Framework | Install | Build | Output |
-| --- | --- | --- | --- | --- | --- |
-| Storefront | `client` | Vite | `npm ci` | `npm run build` | `dist` |
-| API | `server` | Express (auto-detected) | `npm ci` | Default | Default |
-
-Use Node.js 24 for both projects. The API exports an Express app from `src/app.js`; Vercel runs it as a function. `client/vercel.json` handles direct navigation and refreshes on routes such as `/products/...`, `/account`, and `/admin`. See [Express hosting](https://vercel.com/docs/frameworks/backend/express) and [Vite SPA routing](https://vercel.com/docs/frameworks/frontend/vite).
 
 Set these **API project** variables:
 
@@ -94,7 +84,7 @@ Do not configure local simulator credentials on Vercel. `VITE_*` variables are p
 
 ## Supabase and Email Setup
 
-1. Apply unapplied SQL migrations, including the product image bucket and cancellation stock trigger.
+1. Apply SQL migrations, including the product image bucket and cancellation stock trigger.
 2. Set the Supabase Auth Site URL to the storefront HTTPS URL. Add that URL and `/reset-password` to allowed redirect URLs. Add local URLs only to a development project.
 3. Configure Supabase Auth SMTP for signup, recovery and email-change messages. Supabase auth emails and Resend order emails are separate services.
 4. Configure a verified sender domain in Resend and the two API email variables when order emails are required. Email failures do not roll back an already-created order.
