@@ -1,0 +1,15 @@
+-- Schema Reference for E-Commerce Database
+-- Single consolidated reference for tables, relations, and types.
+
+-- Public schema reference
+-- Tables:
+-- 1. users: id (uuid PK), email, full_name, phone, role ('customer' | 'admin'), created_at, updated_at
+-- 2. categories: id (serial PK), name, slug, description, image_url, parent_id, created_at
+-- 3. products: id (serial PK), name, slug, description, price, compare_at_price, stock_quantity, sku, images, category_id, is_active, avg_rating, review_count, attributes, created_at, updated_at
+-- 4. cart_items: id (serial PK), user_id, product_id, quantity, created_at, updated_at
+-- 5. discount_codes: id (serial PK), code, type, value, min_order_amount, max_uses, current_uses, is_active, expires_at, created_at
+-- 6. orders: id (serial PK), user_id, order_number, status, subtotal, discount_amount, total, payment_method, shipping_address, discount_code_id, created_at, updated_at
+-- 7. order_items: id (serial PK), order_id, product_id, quantity, unit_price, total_price
+-- 8. addresses: id (serial PK), user_id, label, full_name, phone, address_line1, address_line2, city, state, postal_code, country, is_default, created_at
+-- 9. wishlists: id (serial PK), user_id, product_id, created_at
+-- 10. reviews: id (serial PK), user_id, product_id, rating, title, body, is_verified_purchase, created_at, updated_at

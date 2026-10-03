@@ -1,0 +1,15 @@
+{
+  "name": "hoardly",
+  "private": true,
+  "scripts": {
+    "install:client": "npm --prefix client ci",
+    "install:server": "npm --prefix server ci",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server start",
+    "test": "npm --prefix server test",
+    "lint": "npm --prefix client run lint"
+  },
+  "engines": { "node": "24.x" }
+}
